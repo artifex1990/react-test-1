@@ -1,5 +1,15 @@
+import './Button.css';
+
 function Button() {
-	return <button>Save all</button>;
+	const clicked = () => {
+		console.log('clicked!');
+	};
+
+	return (
+		<button onClick={clicked} className="button accent">
+			Save all
+		</button>
+	);
 }
 
 export default Button;
