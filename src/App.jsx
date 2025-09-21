@@ -1,41 +1,44 @@
 import './App.css';
 import Button from './components/Button/Button';
 import CardButton from './components/CardButton/CardButton';
+import Header from './components/Header/Header';
+import JournalAddButton from './components/JournalAddButton/JournalAddButton';
 import JournalItem from './components/JournalItem/JournalItem';
+import JournalList from './components/JournalList/JournalList';
+import Body from './layouts/Body/Body';
+import LeftPanel from './layouts/LeftPanel/LeftPanel';
 
 function App() {
 	const data = [
 		{
-			title: 'Подготовка к обновлению курса',
-			date: new Date(),
-			text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit....'
+			id: 1,
+			title: 'Подготовка к обновлению курсов',
+			text: 'Горные походы открывают удивительные природные ландшафт',
+			date: new Date()
 		},
 		{
+			id: 2,
 			title: 'Поход в годы',
-			date: new Date(),
-			text: 'Думал, что очень много време...'
+			text: 'Думал, что очень много времени',
+			date: new Date()
 		}
 	];
 
 	return (
-		<>
-			<Button />
-			<CardButton>Новое воспоминание</CardButton>
-			<CardButton>
-				<JournalItem
-					title={data[0].title}
-					date={data[0].date}
-					text={data[0].text}
-				/>
-			</CardButton>
-			<CardButton>
-				<JournalItem
-					title={data[1].title}
-					date={data[1].date}
-					text={data[1].text}
-				/>
-			</CardButton>
-		</>
+		<div className="app">
+			<LeftPanel>
+				<Header />
+				<JournalAddButton />
+				<JournalList>
+					{data.map((el) => (
+						<CardButton key={el.id}>
+							<JournalItem title={el.title} text={el.text} date={el.date} />
+						</CardButton>
+					))}
+				</JournalList>
+			</LeftPanel>
+			<Body>123</Body>
+		</div>
 	);
 }
 
